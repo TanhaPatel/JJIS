@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.jjis">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/jpglogo"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".OpenPDF"></activity>
+        <activity android:name=".ViewPDF" />
+        <activity android:name=".PDF" />
+        <activity
+            android:name=".StudyMaterial"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Selector"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Info"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Subjects"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Papers"
+            android:parentActivityName=".Subjects">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Subjects" />
+        </activity>
+        <activity
+            android:name=".Students_Dashboard"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

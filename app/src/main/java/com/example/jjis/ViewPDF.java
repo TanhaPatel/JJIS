@@ -3,7 +3,9 @@ package com.example.jjis;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -36,6 +38,12 @@ public class ViewPDF extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_pdf);
 
+        //back button in action bar
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
         final String pdfpath = getIntent().getStringExtra("path");
 
         pdfs = new PDF();
@@ -59,7 +67,7 @@ public class ViewPDF extends AppCompatActivity {
                     DataSnapshot materialSnapshot = dataSnapshot.child("material");
                     Iterable<DataSnapshot> materialChildren = materialSnapshot.getChildren();
                     for (DataSnapshot material : materialChildren) {
-                        list.add(String.valueOf(pdfs));
+                        list.add(material.getKey());
                     }
                 }
                 listView.setAdapter(adapter);
@@ -71,8 +79,7 @@ public class ViewPDF extends AppCompatActivity {
                         DataSnapshot materialSnapshot = dataSnapshot.child("material");
                         Iterable<DataSnapshot> materialChildren = materialSnapshot.getChildren();
                         for (DataSnapshot material : materialChildren) {
-                            showpdf(material.getChildren().toString());
-                            Toast.makeText(ViewPDF.this, "" + material.getChildren().getClass().toString(), Toast.LENGTH_SHORT).show();
+                            showpdf(material.getValue().toString());
                         }
                     }
                 });
@@ -92,5 +99,14 @@ public class ViewPDF extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         Intent newIntent = Intent.createChooser(intent, "Open File With");
         startActivity(newIntent);
+    }
+
+    // implementing back button
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

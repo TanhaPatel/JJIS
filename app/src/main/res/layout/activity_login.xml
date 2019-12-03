@@ -22,7 +22,7 @@
         app:layout_constraintHorizontal_bias="0.554"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/jpglogo" />
+        app:srcCompat="@drawable/whitelogo" />
 
     <TextView
         android:id="@+id/textView"

@@ -27,7 +27,6 @@ public class Students_Dashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     CardView gseb, gujcet, jee, neet;
-    Button jjis;
 
     private FirebaseAuth firebaseAuth;
 
@@ -45,7 +44,6 @@ public class Students_Dashboard extends AppCompatActivity
         gujcet = findViewById(R.id.gujcet);
         jee = findViewById(R.id.jee);
         neet = findViewById(R.id.neet);
-        jjis = findViewById(R.id.jjis);
 
         gseb.setOnClickListener(new View.OnClickListener() {
             @Override

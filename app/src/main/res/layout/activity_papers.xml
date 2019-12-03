@@ -10,17 +10,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:layout_marginBottom="20dp" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textSize="24sp"
-        android:id="@+id/subname"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/roboto_italic"
-        android:textColor="@color/colorPrimary"/>
+        <TextView
+            android:id="@+id/subname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Papers"
+            android:textSize="24sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/roboto_italic"
+            android:textColor="@color/colorPrimary"/>
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -30,7 +33,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/paper1">
+            android:id="@+id/paper1"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -59,7 +63,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/paper2">
+            android:id="@+id/paper2"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -88,7 +93,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/paper3">
+            android:id="@+id/paper3"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -117,7 +123,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/paper4">
+            android:id="@+id/paper4"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -146,7 +153,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/paper5">
+            android:id="@+id/paper5"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"

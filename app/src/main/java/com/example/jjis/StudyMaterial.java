@@ -3,8 +3,10 @@ package com.example.jjis;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +36,12 @@ public class StudyMaterial extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_study_material);
 
+        //back button in action bar
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
         subname = findViewById(R.id.subname);
 
         chap1TV = findViewById(R.id.chap1TV); chap2TV = findViewById(R.id.chap2TV); chap3TV = findViewById(R.id.chap3TV);
@@ -60,7 +68,6 @@ public class StudyMaterial extends AppCompatActivity {
         String course = getIntent().getStringExtra("course_name");
         final String std = getIntent().getStringExtra("standard");
         final String show = course + " " + sub;
-        subname.setText(show);
 
 //NAMING CHAPTERS OF STANDARD 11TH
 
@@ -207,7 +214,7 @@ public class StudyMaterial extends AppCompatActivity {
                 chap4TV.setText("Introduction to Layers");
                 chap5TV.setText("Using Pictures in Synfig");
                 chap6TV.setText("Basic Ubuntu Linux Commands");
-                chap7TV.setText("SVim Editor and Basic Scripting");
+                chap7TV.setText("Vim Editor and Basic Scripting");
                 chap8TV.setText("Advanced Scripting");
                 chap9TV.setText("Introduction to Database Management System");
                 chap10TV.setText("Working with Tables");
@@ -1359,5 +1366,14 @@ public class StudyMaterial extends AppCompatActivity {
         Intent intent = new Intent(StudyMaterial.this, ViewPDF.class);
         intent.putExtra("path","" + path);
         startActivity(intent);
+    }
+
+    // implementing back button
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

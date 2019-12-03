@@ -3,8 +3,10 @@ package com.example.jjis;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +21,12 @@ public class Papers extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_papers);
 
+        //back button in action bar
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
         subname = findViewById(R.id.subname);
 
         paper1TV = findViewById(R.id.paper1TV); paper2TV = findViewById(R.id.paper2TV); paper3TV = findViewById(R.id.paper3TV);
@@ -30,7 +38,6 @@ public class Papers extends AppCompatActivity {
         String sub = getIntent().getStringExtra("subject_name");
         String course = getIntent().getStringExtra("course_name");
         final String show = course + " " + sub;
-        subname.setText(sub);
 
 //NAMING OF PAPER 1
 
@@ -352,5 +359,14 @@ public class Papers extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         Intent newIntent = Intent.createChooser(intent, "Open File With");
         startActivity(newIntent);
+    }
+
+    // implementing back button
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -10,42 +10,22 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/jpglogo"
+        android:icon="@drawable/whitelogo"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OpenPDF"></activity>
         <activity android:name=".ViewPDF" />
-        <activity android:name=".PDF" />
-        <activity
-            android:name=".StudyMaterial"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Selector"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".SplashScreen"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Login"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Info"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Subjects"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Papers"
-            android:parentActivityName=".Subjects">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Subjects" />
-        </activity>
+        <activity android:name=".StudyMaterial" />
+        <activity android:name=".Selector" />
+        <activity android:name=".SplashScreen" />
+        <activity android:name=".Login" />
+        <activity android:name=".Info" />
+        <activity android:name=".Subjects" />
+        <activity android:name=".Papers" />
         <activity
             android:name=".Students_Dashboard"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

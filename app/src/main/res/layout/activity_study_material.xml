@@ -11,16 +11,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="60dp"
         android:layout_marginBottom="20dp" >
 
         <TextView
+            android:id="@+id/subname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textSize="24sp"
-            android:id="@+id/subname"
-            android:layout_marginTop="30dp"
+            android:text="Study Material"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:fontFamily="@font/roboto_italic"
             android:textColor="@color/colorPrimary"/>
 
@@ -32,7 +33,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap1">
+            android:id="@+id/chap1"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -61,7 +63,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap2">
+            android:id="@+id/chap2"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -90,7 +93,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap3">
+            android:id="@+id/chap3"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -119,7 +123,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap4">
+            android:id="@+id/chap4"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -148,7 +153,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap5">
+            android:id="@+id/chap5"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -177,7 +183,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap6">
+            android:id="@+id/chap6"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -206,7 +213,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap7">
+            android:id="@+id/chap7"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -235,7 +243,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap8">
+            android:id="@+id/chap8"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -264,7 +273,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap9">
+            android:id="@+id/chap9"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -293,7 +303,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap10">
+            android:id="@+id/chap10"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -322,7 +333,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap11">
+            android:id="@+id/chap11"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -351,7 +363,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap12">
+            android:id="@+id/chap12"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -380,7 +393,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap13">
+            android:id="@+id/chap13"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -409,7 +423,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap14">
+            android:id="@+id/chap14"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -438,7 +453,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap15">
+            android:id="@+id/chap15"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -467,7 +483,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap16">
+            android:id="@+id/chap16"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -496,7 +513,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap17">
+            android:id="@+id/chap17"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -525,7 +543,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap18">
+            android:id="@+id/chap18"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -554,7 +573,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap19">
+            android:id="@+id/chap19"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -583,7 +603,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap20">
+            android:id="@+id/chap20"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -612,7 +633,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap21">
+            android:id="@+id/chap21"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -641,7 +663,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap22">
+            android:id="@+id/chap22"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -670,7 +693,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap23">
+            android:id="@+id/chap23"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -699,7 +723,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap24">
+            android:id="@+id/chap24"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -728,7 +753,8 @@
             app:cardElevation="6dp"
             app:cardCornerRadius="12dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/chap25">
+            android:id="@+id/chap25"
+            android:layout_margin="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"

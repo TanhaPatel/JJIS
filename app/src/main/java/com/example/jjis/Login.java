@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -59,7 +58,7 @@ public class Login extends AppCompatActivity {
             //close this activity
             finish();
             //opening profile activity
-            startActivity(new Intent(getApplicationContext(), Students_Dashboard.class));
+            startActivity(new Intent(getApplicationContext(), Dashboard.class));
         }
 
         //initializing views
@@ -110,13 +109,28 @@ public class Login extends AppCompatActivity {
 
                                 finish();
                                 if(ext.equals("jjis.edu.in")) {
-                                    startActivity(new Intent(getApplicationContext(), Students_Dashboard.class));
-                                }/*else if(ext.equals("jjis.ac.in")) {
+                                    startActivity(new Intent(getApplicationContext(), Dashboard.class));
+                                } /*else if(ext.equals("jjis.ac.in")) {
                                     startActivity(new Intent(getApplicationContext(), Teachers_Dashboard.class));
                                 }*/
                             }
                         }
                     });
+
+                /*//logging in using number (1 to 100)
+                for(int i=1; i<=100; i++) {
+                    if(email.equals(i) && password.equals(i)) {
+                        Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(Login.this, Dashboard.class));
+                    }
+                }*/
+
+                /*int i=1;
+                if(email.equals(i) && password.equals(i)) {
+                    Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Login.this, Dashboard.class));
+                }*/
+
             }
         });
     }

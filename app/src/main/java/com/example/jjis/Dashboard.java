@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,11 +18,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Students_Dashboard extends AppCompatActivity
+public class Dashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     CardView gseb, gujcet, jee, neet;
@@ -33,12 +31,12 @@ public class Students_Dashboard extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_students_dashboard);
+        setContentView(R.layout.activity_dashboard);
 
-        if(!isConnected(Students_Dashboard.this))
+        /*if(!isConnected(Dashboard.this))
         {
-            buildDialog(Students_Dashboard.this).show();
-        }
+            buildDialog(Dashboard.this).show();
+        }*/
 
         gseb = findViewById(R.id.gseb);
         gujcet = findViewById(R.id.gujcet);
@@ -48,7 +46,7 @@ public class Students_Dashboard extends AppCompatActivity
         gseb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            final Dialog dialog= new Dialog(Students_Dashboard.this);
+            final Dialog dialog= new Dialog(Dashboard.this);
             dialog.setContentView(R.layout.std_selector);
             final Button eleven = dialog.findViewById(R.id.eleven);
             final Button twelve = dialog.findViewById(R.id.twelve);
@@ -56,7 +54,7 @@ public class Students_Dashboard extends AppCompatActivity
             eleven.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent= new Intent(Students_Dashboard.this,Subjects.class);
+                    Intent intent= new Intent(Dashboard.this,Subjects.class);
                     intent.putExtra("course_name","GSEB");
                     intent.putExtra("standard","11");
                     startActivity(intent);
@@ -66,7 +64,7 @@ public class Students_Dashboard extends AppCompatActivity
             twelve.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent= new Intent(Students_Dashboard.this,Subjects.class);
+                    Intent intent= new Intent(Dashboard.this,Subjects.class);
                     intent.putExtra("course_name","GSEB");
                     intent.putExtra("standard","12");
                     startActivity(intent);
@@ -80,7 +78,7 @@ public class Students_Dashboard extends AppCompatActivity
         gujcet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(Students_Dashboard.this,Subjects.class);
+                Intent intent= new Intent(Dashboard.this,Subjects.class);
                 intent.putExtra("course_name","GUJCET");
                 startActivity(intent);
             }
@@ -89,7 +87,7 @@ public class Students_Dashboard extends AppCompatActivity
         jee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(Students_Dashboard.this,Subjects.class);
+                Intent intent= new Intent(Dashboard.this,Subjects.class);
                 intent.putExtra("course_name","JEE");
                 startActivity(intent);
             }
@@ -98,7 +96,7 @@ public class Students_Dashboard extends AppCompatActivity
         neet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(Students_Dashboard.this,Subjects.class);
+                Intent intent= new Intent(Dashboard.this,Subjects.class);
                 intent.putExtra("course_name","NEET");
                 startActivity(intent);
             }
@@ -191,22 +189,22 @@ public class Students_Dashboard extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_gseb) {
-            Intent intent= new Intent(Students_Dashboard.this,Subjects.class);
+            Intent intent= new Intent(Dashboard.this,Subjects.class);
             intent.putExtra("course_name","GSEB");
             startActivity(intent);
 
         } else if (id == R.id.nav_gujcet) {
-            Intent intent= new Intent(Students_Dashboard.this,Subjects.class);
+            Intent intent= new Intent(Dashboard.this,Subjects.class);
             intent.putExtra("course_name","GUJCET");
             startActivity(intent);
 
         } else if (id == R.id.nav_jee) {
-            Intent intent= new Intent(Students_Dashboard.this,Subjects.class);
+            Intent intent= new Intent(Dashboard.this,Subjects.class);
             intent.putExtra("course_name","JEE");
             startActivity(intent);
 
         } else if (id == R.id.nav_neet) {
-            Intent intent= new Intent(Students_Dashboard.this,Subjects.class);
+            Intent intent= new Intent(Dashboard.this,Subjects.class);
             intent.putExtra("course_name","NEET");
             startActivity(intent);
 
@@ -214,7 +212,7 @@ public class Students_Dashboard extends AppCompatActivity
             //logging out the user
             firebaseAuth.signOut();
             finish();
-            startActivity(new Intent(Students_Dashboard.this, Login.class));
+            startActivity(new Intent(Dashboard.this, Login.class));
 
         } else if (id == R.id.nav_info) {
             startActivity(new Intent(getApplicationContext(), Info.class));

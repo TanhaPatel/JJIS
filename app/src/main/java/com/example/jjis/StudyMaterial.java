@@ -1363,6 +1363,7 @@ public class StudyMaterial extends AppCompatActivity {
     }
 
     private void viewpdf(String path) {
+        //Intent intent = new Intent(StudyMaterial.this, NewViewPDF.class);
         Intent intent = new Intent(StudyMaterial.this, ViewPDF.class);
         intent.putExtra("path","" + path);
         startActivity(intent);

@@ -3,6 +3,7 @@ package com.example.jjis;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -21,8 +22,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ViewPDF extends AppCompatActivity {
+public class NewViewPDF extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
     FirebaseAuth firebaseAuth;
@@ -31,7 +33,9 @@ public class ViewPDF extends AppCompatActivity {
     ListView listView;
     ArrayList<String> list;
     ArrayAdapter<String> adapter;
-    PDF pdfs;
+    NewPDF pdfs;
+    List<NewPDF> pdf_1;
+    String pdfpath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,57 +48,66 @@ public class ViewPDF extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        final String pdfpath = getIntent().getStringExtra("path");
+        pdfpath = getIntent().getStringExtra("path");
 
-        pdfs = new PDF();
-        progressBar = findViewById(R.id.progressbar);
-        listView = findViewById(R.id.pdf_list);
-        View emptyView = findViewById(R.id.empty_view);
-        listView.setEmptyView(emptyView);
+        pdf_1=new ArrayList<>();
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("" + pdfpath);
-        list = new ArrayList<String>();
-        adapter = new ArrayAdapter<>(this, R.layout.pdf_info, R.id.viewpdfinfo, list);
+        Viewallpdfs();
+    }
 
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+    //to view pdfs
+
+    private void Viewallpdfs() {
+        databaseReference= FirebaseDatabase.getInstance().getReference(pdfpath);
+
+        //adapter = new ArrayAdapter<String>(this,R.layout.new_pdf_info,R.id.viewpdfinfo,list);
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(final DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    pdfs = ds.getValue(PDF.class);
-                    DataSnapshot materialSnapshot = dataSnapshot.child("material");
-                    Iterable<DataSnapshot> materialChildren = materialSnapshot.getChildren();
-                    for (DataSnapshot material : materialChildren) {
-                        list.add(material.getKey());
-                    }
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot postsnapshot:dataSnapshot.getChildren()){
+
+                    NewPDF pdf_2=postsnapshot.getValue(NewPDF.class);
+                    pdf_1.add(pdf_2);
                 }
+                String [] pdf_s = new String[pdf_1.size()];
+
+                for(int i=0;i<pdf_s.length;i++){
+
+                    pdf_s[i]=pdf_1.get(i).getName();
+                }
+
                 listView.setAdapter(adapter);
-                progressBar.setVisibility(View.GONE);
 
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        DataSnapshot materialSnapshot = dataSnapshot.child("material");
-                        /*Iterable<DataSnapshot> materialChildren = materialSnapshot.getChildren();
-                        for (DataSnapshot material : materialChildren) {
-                            showpdf(material.getValue().toString());
-                        }*/
+                        NewPDF pdf_3= pdf_1.get(position);
 
-                        for (DataSnapshot material : materialSnapshot.getChildren()) {
-                            showpdf(material.getValue().toString());
-                        }
+                        showpdf(pdf_3.getUrl());
+                        //showpdf(pdf_1.getlink().toString());
+
+                        // Intent intent=new Intent();
+                        //intent.setData(Uri.parse(upload_class2.getUrl()));
+                        //  myurl = upload_class2.getUrl().toString();
+                        // intent.putExtra()*/
+                        /* startActivity(new Intent(My_pdfs.this,Pdf_viewer.class));*/
+
+                /*Intent intent=new Intent(My_pdfs.this,Pdf_viewer.class);
+                intent.putExtra("Link",upload_class2.getUrl().toString());
+                startActivity(intent);*/
                     }
                 });
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Failed to read value
-                Toast.makeText(ViewPDF.this, "Failed to retrieve data", Toast.LENGTH_LONG).show();
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }
+
 
     private void showpdf(String pdf) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -104,6 +117,7 @@ public class ViewPDF extends AppCompatActivity {
         startActivity(newIntent);
     }
 
+
     // implementing back button
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
@@ -112,4 +126,6 @@ public class ViewPDF extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }

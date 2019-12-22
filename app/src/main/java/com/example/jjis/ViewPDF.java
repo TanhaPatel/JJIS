@@ -3,6 +3,7 @@ package com.example.jjis;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -75,15 +76,13 @@ public class ViewPDF extends AppCompatActivity {
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        DataSnapshot materialSnapshot = dataSnapshot.child("material");
-                        /*Iterable<DataSnapshot> materialChildren = materialSnapshot.getChildren();
-                        for (DataSnapshot material : materialChildren) {
-                            showpdf(material.getValue().toString());
-                        }*/
-
-                        for (DataSnapshot material : materialSnapshot.getChildren()) {
+                    DataSnapshot materialSnapshot = dataSnapshot.child("material");
+                    String name = (String) parent.getItemAtPosition(position);
+                    for (DataSnapshot material : materialSnapshot.getChildren()) {
+                        if(material.getKey() == name) {
                             showpdf(material.getValue().toString());
                         }
+                    }
                     }
                 });
             }
@@ -94,6 +93,7 @@ public class ViewPDF extends AppCompatActivity {
                 Toast.makeText(ViewPDF.this, "Failed to retrieve data", Toast.LENGTH_LONG).show();
             }
         });
+
     }
 
     private void showpdf(String pdf) {

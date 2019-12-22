@@ -18,25 +18,34 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Dashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     CardView gseb, gujcet, jee, neet;
-
-    private FirebaseAuth firebaseAuth;
+    FirebaseAuth firebaseAuth;
+    SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        /*if(!isConnected(Dashboard.this))
+        session = new SessionManager(getApplicationContext());
+        session.checkLogin();
+
+        if(!isConnected(Dashboard.this))
         {
             buildDialog(Dashboard.this).show();
-        }*/
+        }
 
         gseb = findViewById(R.id.gseb);
         gujcet = findViewById(R.id.gujcet);
@@ -48,26 +57,26 @@ public class Dashboard extends AppCompatActivity
             public void onClick(View v) {
             final Dialog dialog= new Dialog(Dashboard.this);
             dialog.setContentView(R.layout.std_selector);
-            final Button eleven = dialog.findViewById(R.id.eleven);
-            final Button twelve = dialog.findViewById(R.id.twelve);
+            Button eleven = dialog.findViewById(R.id.eleven);
+            Button twelve = dialog.findViewById(R.id.twelve);
 
             eleven.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent= new Intent(Dashboard.this,Subjects.class);
-                    intent.putExtra("course_name","GSEB");
-                    intent.putExtra("standard","11");
-                    startActivity(intent);
+                Intent intent= new Intent(Dashboard.this,Subjects.class);
+                intent.putExtra("course_name","GSEB");
+                intent.putExtra("standard","11");
+                startActivity(intent);
                 }
             });
 
             twelve.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent= new Intent(Dashboard.this,Subjects.class);
-                    intent.putExtra("course_name","GSEB");
-                    intent.putExtra("standard","12");
-                    startActivity(intent);
+                Intent intent= new Intent(Dashboard.this,Subjects.class);
+                intent.putExtra("course_name","GSEB");
+                intent.putExtra("standard","12");
+                startActivity(intent);
                 }
             });
 
@@ -157,16 +166,6 @@ public class Dashboard extends AppCompatActivity
                 startActivity(getIntent());
             }
         });
-
-        /*builder.setPositiveButton("Turn On!", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Intent i = new Intent();
-                i.setAction(Settings.ACTION_DATA_USAGE_SETTINGS);
-                startActivity(i);
-            }
-        });*/
-
         return builder;
     }
 
@@ -209,10 +208,7 @@ public class Dashboard extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_logout) {
-            //logging out the user
-            firebaseAuth.signOut();
-            finish();
-            startActivity(new Intent(Dashboard.this, Login.class));
+            session.logoutUser();
 
         } else if (id == R.id.nav_info) {
             startActivity(new Intent(getApplicationContext(), Info.class));

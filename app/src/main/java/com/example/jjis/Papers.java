@@ -16,6 +16,89 @@ public class Papers extends AppCompatActivity {
     TextView paper1TV, paper2TV, paper3TV, paper4TV, paper5TV, subname;
     CardView paper1, paper2, paper3, paper4, paper5;
 
+//ASSIGNING PDF LINKS
+    String
+    gseb_phy_1 = "",
+    gseb_phy_2 = "",
+    gseb_phy_3 = "",
+    gseb_phy_4 = "",
+    gseb_phy_5 = "",
+    gseb_chem_1 = "",
+    gseb_chem_2 = "",
+    gseb_chem_3 = "",
+    gseb_chem_4 = "",
+    gseb_chem_5 = "",
+    gseb_maths_1 = "https://firebasestorage.googleapis.com/v0/b/jjisapp.appspot.com/o/GSEB%20papers%2Fmaths%2FMaths%202015.pdf?alt=media&token=5fb3e91a-da61-4d9f-ad90-6084ed4c7414",
+    gseb_maths_2 = "",
+    gseb_maths_3 = "",
+    gseb_maths_4 = "",
+    gseb_maths_5 = "",
+    gseb_bio_1 = "",
+    gseb_bio_2 = "",
+    gseb_bio_3 = "",
+    gseb_bio_4 = "",
+    gseb_bio_5 = "",
+    gseb_eng_1 = "",
+    gseb_eng_2 = "",
+    gseb_eng_3 = "",
+    gseb_eng_4 = "",
+    gseb_eng_5 = "",
+    gseb_comp_1 = "",
+    gseb_comp_2 = "",
+    gseb_comp_3 = "",
+    gseb_comp_4 = "",
+    gseb_comp_5 = "",
+    gujcet_phy_1 = "",
+    gujcet_phy_2 = "",
+    gujcet_phy_3 = "",
+    gujcet_phy_4 = "",
+    gujcet_phy_5 = "",
+    gujcet_chem_1 = "",
+    gujcet_chem_2 = "",
+    gujcet_chem_3 = "",
+    gujcet_chem_4 = "",
+    gujcet_chem_5 = "",
+    gujcet_maths_1 = "",
+    gujcet_maths_2 = "",
+    gujcet_maths_3 = "",
+    gujcet_maths_4 = "",
+    gujcet_maths_5 = "",
+    gujcet_bio_1 = "",
+    gujcet_bio_2 = "",
+    gujcet_bio_3 = "",
+    gujcet_bio_4 = "",
+    gujcet_bio_5 = "",
+    jee_phy_1 = "",
+    jee_phy_2 = "",
+    jee_phy_3 = "",
+    jee_phy_4 = "",
+    jee_phy_5 = "",
+    jee_chem_1 = "",
+    jee_chem_2 = "",
+    jee_chem_3 = "",
+    jee_chem_4 = "",
+    jee_chem_5 = "",
+    jee_maths_1 = "",
+    jee_maths_2 = "",
+    jee_maths_3 = "",
+    jee_maths_4 = "",
+    jee_maths_5 = "",
+    neet_phy_1 = "",
+    neet_phy_2 = "",
+    neet_phy_3 = "",
+    neet_phy_4 = "",
+    neet_phy_5 = "",
+    neet_chem_1 = "",
+    neet_chem_2 = "",
+    neet_chem_3 = "",
+    neet_chem_4 = "",
+    neet_chem_5 = "",
+    neet_bio_1 = "",
+    neet_bio_2 = "",
+    neet_bio_3 = "",
+    neet_bio_4 = "",
+    neet_bio_5 = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +122,7 @@ public class Papers extends AppCompatActivity {
         String course = getIntent().getStringExtra("course_name");
         final String show = course + " " + sub;
 
-//NAMING OF PAPER 1
+//NAMING OF PAPERS
 
         if(show.equals("GSEB" + " " + "Physics")) {
             paper1TV.setText("GSEB Physics 2015");
@@ -155,43 +238,43 @@ public class Papers extends AppCompatActivity {
 
         }
 
-//LINKING PATHS OF PAPER 1
+//LINKING PATHS OF PAPERS
 
         paper1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             if(show.equals("GSEB" + " " + "Physics")) {
-                showpdf("https://firebasestorage.googleapis.com/v0/b/studymaterial-22589.appspot.com/o/Exam%2FGSEB%2F12%2FCOMPUTER%2FSTUDY%2F1.%20Creating%20HTML%20Forms%20Using%20KompoZer.pdf?alt=media&token=25f9bd4e-118b-46bf-b21a-0b7f9f5f72d1");
+                showpdf(gseb_phy_1);
             } else if(show.equals("GSEB" + " " + "Chemistry")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_chem_1);
             } else if(show.equals("GSEB" + " " + "Maths")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_maths_1);
             } else if(show.equals("GSEB" + " " + "Biology")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_bio_1);
             } else if(show.equals("GSEB" + " " + "Computer")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_comp_1);
             } else if(show.equals("GSEB" + " " + "English")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_eng_1);
             } else if(show.equals("GUJCET" + " " + "Physics")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gujcet_phy_1);
             } else if(show.equals("GUJCET" + " " + "Chemistry")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gujcet_chem_1);
             } else if(show.equals("GUJCET" + " " + "Maths")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gujcet_maths_1);
             } else if(show.equals("GUJCET" + " " + "Biology")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gujcet_bio_1);
             } else if(show.equals("JEE" + " " + "Physics")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(jee_phy_1);
             } else if(show.equals("JEE" + " " + "Chemistry")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(jee_chem_1);
             } else if(show.equals("JEE" + " " + "Maths")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(jee_maths_1);
             }  else if(show.equals("NEET" + " " + "Physics")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(neet_phy_1);
             } else if(show.equals("NEET" + " " + "Chemistry")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(neet_chem_1);
             } else if(show.equals("NEET" + " " + "Biology")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(neet_bio_1);
             }
             }
         });
@@ -200,37 +283,37 @@ public class Papers extends AppCompatActivity {
             @Override
             public void onClick(View v) {
             if(show.equals("GSEB" + " " + "Physics")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_phy_2);
             } else if(show.equals("GSEB" + " " + "Chemistry")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_chem_2);
             } else if(show.equals("GSEB" + " " + "Maths")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_maths_2);
             } else if(show.equals("GSEB" + " " + "Biology")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_bio_2);
             } else if(show.equals("GSEB" + " " + "Computer")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_comp_2);
             } else if(show.equals("GSEB" + " " + "English")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_eng_2);
             } else if(show.equals("GUJCET" + " " + "Physics")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gujcet_phy_2);
             } else if(show.equals("GUJCET" + " " + "Chemistry")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gujcet_chem_2);
             } else if(show.equals("GUJCET" + " " + "Maths")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gujcet_maths_2);
             } else if(show.equals("GUJCET" + " " + "Biology")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gujcet_bio_2);
             } else if(show.equals("JEE" + " " + "Physics")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(jee_phy_2);
             } else if(show.equals("JEE" + " " + "Chemistry")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(jee_chem_2);
             } else if(show.equals("JEE" + " " + "Maths")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(jee_maths_2);
             }  else if(show.equals("NEET" + " " + "Physics")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(neet_phy_2);
             } else if(show.equals("NEET" + " " + "Chemistry")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(neet_chem_2);
             } else if(show.equals("NEET" + " " + "Biology")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(neet_bio_2);
             }
             }
         });
@@ -239,37 +322,37 @@ public class Papers extends AppCompatActivity {
             @Override
             public void onClick(View v) {
             if(show.equals("GSEB" + " " + "Physics")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_phy_3);
             } else if(show.equals("GSEB" + " " + "Chemistry")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_chem_3);
             } else if(show.equals("GSEB" + " " + "Maths")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_maths_3);
             } else if(show.equals("GSEB" + " " + "Biology")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_bio_3);
             } else if(show.equals("GSEB" + " " + "Computer")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_comp_3);
             } else if(show.equals("GSEB" + " " + "English")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_eng_3);
             } else if(show.equals("GUJCET" + " " + "Physics")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gujcet_phy_3);
             } else if(show.equals("GUJCET" + " " + "Chemistry")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gujcet_chem_3);
             } else if(show.equals("GUJCET" + " " + "Maths")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gujcet_maths_3);
             } else if(show.equals("GUJCET" + " " + "Biology")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gujcet_bio_3);
             } else if(show.equals("JEE" + " " + "Physics")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(jee_phy_3);
             } else if(show.equals("JEE" + " " + "Chemistry")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(jee_chem_3);
             } else if(show.equals("JEE" + " " + "Maths")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(jee_maths_3);
             }  else if(show.equals("NEET" + " " + "Physics")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(neet_phy_3);
             } else if(show.equals("NEET" + " " + "Chemistry")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(neet_chem_3);
             } else if(show.equals("NEET" + " " + "Biology")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(neet_bio_3);
             }
             }
         });
@@ -278,37 +361,37 @@ public class Papers extends AppCompatActivity {
             @Override
             public void onClick(View v) {
             if(show.equals("GSEB" + " " + "Physics")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_phy_4);
             } else if(show.equals("GSEB" + " " + "Chemistry")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_chem_4);
             } else if(show.equals("GSEB" + " " + "Maths")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_maths_4);
             } else if(show.equals("GSEB" + " " + "Biology")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_bio_4);
             } else if(show.equals("GSEB" + " " + "Computer")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_comp_4);
             } else if(show.equals("GSEB" + " " + "English")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_eng_4);
             } else if(show.equals("GUJCET" + " " + "Physics")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gujcet_phy_4);
             } else if(show.equals("GUJCET" + " " + "Chemistry")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gujcet_chem_4);
             } else if(show.equals("GUJCET" + " " + "Maths")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gujcet_maths_4);
             } else if(show.equals("GUJCET" + " " + "Biology")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gujcet_bio_4);
             } else if(show.equals("JEE" + " " + "Physics")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(jee_phy_4);
             } else if(show.equals("JEE" + " " + "Chemistry")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(jee_chem_4);
             } else if(show.equals("JEE" + " " + "Maths")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(jee_maths_4);
             }  else if(show.equals("NEET" + " " + "Physics")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(neet_phy_4);
             } else if(show.equals("NEET" + " " + "Chemistry")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(neet_chem_4);
             } else if(show.equals("NEET" + " " + "Biology")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(neet_bio_4);
             }
             }
         });
@@ -317,37 +400,37 @@ public class Papers extends AppCompatActivity {
             @Override
             public void onClick(View v) {
             if(show.equals("GSEB" + " " + "Physics")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_phy_5);
             } else if(show.equals("GSEB" + " " + "Chemistry")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_chem_5);
             } else if(show.equals("GSEB" + " " + "Maths")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_maths_5);
             } else if(show.equals("GSEB" + " " + "Biology")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_bio_5);
             } else if(show.equals("GSEB" + " " + "Computer")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_comp_5);
             } else if(show.equals("GSEB" + " " + "English")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gseb_eng_5);
             } else if(show.equals("GUJCET" + " " + "Physics")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gujcet_phy_5);
             } else if(show.equals("GUJCET" + " " + "Chemistry")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gujcet_chem_5);
             } else if(show.equals("GUJCET" + " " + "Maths")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gujcet_maths_5);
             } else if(show.equals("GUJCET" + " " + "Biology")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(gujcet_bio_5);
             } else if(show.equals("JEE" + " " + "Physics")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(jee_phy_5);
             } else if(show.equals("JEE" + " " + "Chemistry")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(jee_chem_5);
             } else if(show.equals("JEE" + " " + "Maths")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(jee_maths_5);
             }  else if(show.equals("NEET" + " " + "Physics")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(neet_phy_5);
             } else if(show.equals("NEET" + " " + "Chemistry")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(neet_chem_5);
             } else if(show.equals("NEET" + " " + "Biology")) {
-                Toast.makeText(Papers.this, " " + show, Toast.LENGTH_SHORT).show();
+                showpdf(neet_bio_5);
             }
             }
         });

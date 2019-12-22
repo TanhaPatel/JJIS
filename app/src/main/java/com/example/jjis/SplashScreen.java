@@ -15,7 +15,6 @@ public class SplashScreen extends AppCompatActivity {
         Handler handler;
         ImageView splash_logo;
         TextView splash_txt1, splash_txt2;
-        Animation logo, txt1, txt2;
 
         @SuppressLint("WrongViewCast")
         @Override
@@ -26,7 +25,7 @@ public class SplashScreen extends AppCompatActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent intent = new Intent(SplashScreen.this,  Dashboard.class);
+                    Intent intent = new Intent(SplashScreen.this, Dashboard.class);
                     startActivity(intent);
                     finish();
                 }

@@ -105,7 +105,6 @@ public class Login extends AppCompatActivity {
                             if(task.isSuccessful()){
                                 //start the profile activity
                                 String ext = email.substring(email.indexOf("@") + 1);
-                                Toast.makeText(Login.this, ""+ext, Toast.LENGTH_SHORT).show();
 
                                 finish();
                                 if(ext.equals("jjis.edu.in")) {
@@ -116,21 +115,6 @@ public class Login extends AppCompatActivity {
                             }
                         }
                     });
-
-                /*//logging in using number (1 to 100)
-                for(int i=1; i<=100; i++) {
-                    if(email.equals(i) && password.equals(i)) {
-                        Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(Login.this, Dashboard.class));
-                    }
-                }*/
-
-                /*int i=1;
-                if(email.equals(i) && password.equals(i)) {
-                    Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(Login.this, Dashboard.class));
-                }*/
-
             }
         });
     }
@@ -171,15 +155,7 @@ public class Login extends AppCompatActivity {
                 startActivity(getIntent());
             }
         });
-
-        /*builder.setPositiveButton("Turn On!", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Intent i = new Intent();
-                i.setAction(Settings.ACTION_DATA_USAGE_SETTINGS);
-                startActivity(i);
-            }
-        });*/        return builder;
+        return builder;
     }
 
     // Internet detection code ends

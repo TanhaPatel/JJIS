@@ -15,22 +15,19 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NewViewPDF"></activity>
-        <activity android:name=".NewPDF" />
-        <activity android:name=".OpenPDF" />
-        <activity android:name=".LoginDto" />
-        <activity android:name=".Info" />
-        <activity android:name=".Login" />
-        <activity
-            android:name=".SplashScreen"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".NewLogin" />
         <activity android:name=".Subjects" />
         <activity android:name=".Selector" />
         <activity android:name=".StudyMaterial" />
         <activity android:name=".Papers" />
         <activity android:name=".ViewPDF" />
+        <activity android:name=".Info" />
+        <activity android:name=".Login" />
         <activity
             android:name=".Dashboard"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SplashScreen"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,5 +1,6 @@
 package com.example.jjis;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -7,7 +8,6 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -16,105 +16,101 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
 
-    EditText emailet, passwordet;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+    EditText username, password;
     Button loginbtn;
     ProgressDialog progressDialog;
-    FirebaseAuth firebaseAuth;
-    GoogleSignInClient mGoogleSignInClient;
+    Credentials credentials;
+    SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        session = new SessionManager(getApplicationContext());
+
         if(!isConnected(Login.this))
         {
             buildDialog(Login.this).show();
         }
 
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
-        //getting firebase auth object
-        firebaseAuth = FirebaseAuth.getInstance();
-
-        //if the objects getcurrentuser method is not null
-        //means user is already logged in
-        if(firebaseAuth.getCurrentUser() != null){
-            //close this activity
-            finish();
-            //opening profile activity
-            startActivity(new Intent(getApplicationContext(), Dashboard.class));
-        }
-
         //initializing views
-        emailet = findViewById(R.id.email);
-        passwordet = findViewById(R.id.password);
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
         loginbtn = findViewById(R.id.loginbtn);
-
         progressDialog = new ProgressDialog(this);
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String email = emailet.getText().toString().trim();
-                String password = passwordet.getText().toString().trim();
-
                 //checking if email and passwords are empty
-                if(TextUtils.isEmpty(email)) {
-                    Toast.makeText(Login.this,"Please enter email",Toast.LENGTH_LONG).show();
+                if(TextUtils.isEmpty(username.getText())) {
+                    Toast.makeText(Login.this,"Please enter username",Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                if(TextUtils.isEmpty(password)) {
+                if(TextUtils.isEmpty(password.getText())) {
                     Toast.makeText(Login.this,"Please enter password",Toast.LENGTH_LONG).show();
                     return;
                 }
 
                 if(password.length() < 6 || password.length() > 10) {
-                    passwordet.setError("Password should be between 6 to 10 characters");
+                    password.setError("Password should be between 6 to 10 characters");
                     return;
                 }
 
-                //if the email and password are not empty
-                //displaying a progress dialog
+                //if the email and password are not empty displaying a progress dialog
                 progressDialog.setMessage("Logging in...");
                 progressDialog.show();
 
-                //logging in the user
-                firebaseAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            progressDialog.dismiss();
-                            //if the task is successfull
-                            if(task.isSuccessful()){
-                                //start the profile activity
-                                String ext = email.substring(email.indexOf("@") + 1);
+                databaseReference = firebaseDatabase.getReference("LOGIN_ID").child(String.valueOf(username.getText()));
+                databaseReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        credentials = dataSnapshot.getValue(Credentials.class);
+                        if(String.valueOf(password.getText()).equals(credentials.getPassword())){
+                            if(credentials.getLogin_no() == 0) {
+                                progressDialog.dismiss();
+                                databaseReference.child("login_no").setValue(1);
+                                session.createLoginSession("" + username.getText().toString(), "" + password.getText().toString());
+                                startActivity(new Intent(getApplicationContext(), Dashboard.class));
+                            } else {
+                                progressDialog.dismiss();
+                                final Dialog dialog = new Dialog(Login.this);
+                                dialog.setContentView(R.layout.multi_login_error);
+                                Button ok = dialog.findViewById(R.id.ok);
+                                dialog.setCancelable(true);
 
-                                finish();
-                                if(ext.equals("jjis.edu.in")) {
-                                    startActivity(new Intent(getApplicationContext(), Dashboard.class));
-                                } /*else if(ext.equals("jjis.ac.in")) {
-                                    startActivity(new Intent(getApplicationContext(), Teachers_Dashboard.class));
-                                }*/
+                                ok.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        dialog.dismiss();
+                                    }
+                                });
+                                dialog.show();
                             }
+                        } else {
+                            progressDialog.dismiss();
+                            Toast.makeText(Login.this, "Incorrect password. Please try again...", Toast.LENGTH_SHORT).show();
                         }
-                    });
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Toast.makeText(Login.this, "Try again later!", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
     }
@@ -155,7 +151,7 @@ public class Login extends AppCompatActivity {
                 startActivity(getIntent());
             }
         });
-        return builder;
+       return builder;
     }
 
     // Internet detection code ends

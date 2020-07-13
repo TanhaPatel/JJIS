@@ -18,20 +18,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class Dashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     CardView gseb, gujcet, jee, neet;
-    FirebaseAuth firebaseAuth;
     SessionManager session;
 
     @Override
@@ -55,7 +48,7 @@ public class Dashboard extends AppCompatActivity
         gseb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            final Dialog dialog= new Dialog(Dashboard.this);
+            final Dialog dialog = new Dialog(Dashboard.this);
             dialog.setContentView(R.layout.std_selector);
             Button eleven = dialog.findViewById(R.id.eleven);
             Button twelve = dialog.findViewById(R.id.twelve);
@@ -211,7 +204,7 @@ public class Dashboard extends AppCompatActivity
             session.logoutUser();
 
         } else if (id == R.id.nav_info) {
-            startActivity(new Intent(getApplicationContext(), Info.class));
+            startActivity(new Intent(getApplicationContext(),Info.class));
 
         } else if (id == R.id.nav_share) {
             Intent sharingIntent = new Intent(Intent.ACTION_SEND);

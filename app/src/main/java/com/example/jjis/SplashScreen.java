@@ -14,7 +14,7 @@ public class SplashScreen extends AppCompatActivity {
 
         Handler handler;
         ImageView splash_logo;
-        TextView splash_txt1, splash_txt2;
+        TextView splash_txt;
 
         @SuppressLint("WrongViewCast")
         @Override
@@ -32,12 +32,10 @@ public class SplashScreen extends AppCompatActivity {
             }, 3000);
 
             splash_logo = findViewById(R.id.splash_logo);
-            splash_txt1 = findViewById(R.id.splash_txt1);
-            splash_txt2 = findViewById(R.id.splash_txt2);
+            splash_txt = findViewById(R.id.splash_txt1);
 
             Animation logo = AnimationUtils.loadAnimation(this, R.anim.splash);
             splash_logo.startAnimation(logo);
-            splash_txt1.startAnimation(logo);
-            splash_txt2.startAnimation(logo);
+            splash_txt.startAnimation(logo);
         }
 }

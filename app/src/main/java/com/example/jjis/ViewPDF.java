@@ -3,7 +3,6 @@ package com.example.jjis;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -32,7 +31,7 @@ public class ViewPDF extends AppCompatActivity {
     ListView listView;
     ArrayList<String> list;
     ArrayAdapter<String> adapter;
-    PDF pdfs;
+    com.example.jjis.PDF pdfs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +46,7 @@ public class ViewPDF extends AppCompatActivity {
 
         final String pdfpath = getIntent().getStringExtra("path");
 
-        pdfs = new PDF();
+        pdfs = new com.example.jjis.PDF();
         progressBar = findViewById(R.id.progressbar);
         listView = findViewById(R.id.pdf_list);
         View emptyView = findViewById(R.id.empty_view);
@@ -63,7 +62,7 @@ public class ViewPDF extends AppCompatActivity {
             @Override
             public void onDataChange(final DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    pdfs = ds.getValue(PDF.class);
+                    pdfs = ds.getValue(com.example.jjis.PDF.class);
                     DataSnapshot materialSnapshot = dataSnapshot.child("material");
                     Iterable<DataSnapshot> materialChildren = materialSnapshot.getChildren();
                     for (DataSnapshot material : materialChildren) {
